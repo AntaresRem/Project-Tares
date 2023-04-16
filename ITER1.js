@@ -6,15 +6,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const logo = document.querySelector(".logo");
   logo.appendChild(canvas);
 
-  const points = [
-    { x: 50, y: 50 },
-    { x: 150, y: 50 },
-    { x: 250, y: 50 },
-    { x: 350, y: 50 },
-  ];
+  const points = [    { x: 50, y: 50 },    { x: 150, y: 50 },    { x: 250, y: 50 },    { x: 350, y: 50 },  ];
+
+  const images = [    "https://raw.githubusercontent.com/AntaresRem/Project-Tares/main/Fotor_AI.png",    "carousel-image2.jpg",    "carousel-image3.jpg",  ];
 
   let planePosition = 0;
   let t = 0;
+  let dotIndex = 0;
+  let imageDisplayed = false;
 
   function drawLine() {
     ctx.beginPath();
@@ -44,6 +43,14 @@ document.addEventListener("DOMContentLoaded", function () {
     return start * (1 - t) + end * t;
   }
 
+  function displayImage() {
+    if (!imageDisplayed) {
+      const carouselImages = document.querySelectorAll(".carousel img");
+      carouselImages[dotIndex].style.display = "block";
+      imageDisplayed = true;
+    }
+  }
+
   function updatePlane() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawLine();
@@ -60,8 +67,37 @@ document.addEventListener("DOMContentLoaded", function () {
     if (t >= 1) {
       t = 0;
       planePosition = (planePosition + 1) % points.length;
+      if (planePosition === 0) {
+        if (dotIndex < 3) {
+          displayImage();
+        }
+        dotIndex++;
+        imageDisplayed = false;
+      }
     }
   }
 
   setInterval(updatePlane, 30);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Add smooth scrolling to all links
+  const links = document.querySelectorAll('a[href^="#"]');
+  for (const link of links) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
+
+});
+
