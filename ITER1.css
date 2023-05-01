@@ -7,6 +7,7 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
+
 }
 
 header {
@@ -56,7 +57,7 @@ nav ul li button {
   background-color: #000;
   color: #fff;
   padding: 4rem 0;
-  margin-top: -100px;
+  margin-top: -80px;
 }
 
 .hero button {
@@ -67,6 +68,7 @@ nav ul li button {
   border-radius: 25px;
   text-decoration: none;
   cursor: pointer;
+  margin-top: 30px;
 }
 
 .carousel {
@@ -107,7 +109,7 @@ nav ul li button {
   border-radius: 25px;
   text-decoration: none;
   cursor: pointer;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 footer {
@@ -139,4 +141,8 @@ footer ul li a {
 main {
   margin: 0 auto;
   max-width: 70%;
+}
+
+#plane-canvas {
+  margin-bottom: -200px;
 }
